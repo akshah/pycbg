@@ -1,0 +1,5 @@
+numpy
+pyproj
+shapely
+pymysql
+mpl_toolkits.basemap
