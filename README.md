@@ -6,6 +6,6 @@ Uses ping measurements from RIPE Atlas as input.
 Example:
 ```python
 cbgObj=cbg()
-inputConstraints=cbgObj.getInputConstraints(json.load(open(sys.argv[1],'r')))
+inputConstraints=cbgObj.getInputConstraints(json.load(open('data/4514096.json','r')))
 cityDict=cbgObj.getCities(inputConstraints)
 ```
