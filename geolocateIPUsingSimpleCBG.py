@@ -10,7 +10,9 @@ if __name__=="__main__":
         cbgObj=cbg()
 
 
-        measurementData=json.load(open(sys.argv[1],'r'))
+        with closing(open(sys.argv[1],'r')) as fp:
+            for line in fp:
+                measurementData=eval(line)[0]
         inputConstraints=cbgObj.getInputConstraints(measurementData)
         cityDict=cbgObj.getCities(inputConstraints)
 
