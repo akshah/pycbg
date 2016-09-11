@@ -374,10 +374,11 @@ class cbg():
         intersectionRegions=self.getMaxIntersectionRegions(polyList)
         centroidsList=[]
         for pp in intersectionRegions:
-            centroidPoint=pp.centroid
-            centroidLon=centroidPoint.x
-            centroidLat=centroidPoint.y
-            centroidDict={'lat':centroidLat,'lon':centroidLon}
-            centroidsList.append(centroidDict)
+            if pp:
+                centroidPoint=pp.centroid
+                centroidLon=centroidPoint.x
+                centroidLat=centroidPoint.y
+                centroidDict={'lat':centroidLat,'lon':centroidLon}
+                centroidsList.append(centroidDict)
 
         return centroidsList
