@@ -330,12 +330,13 @@ class cbg():
                 interSecRegion=interSecRegion.intersection(entry[itr])
             intersectionRegions.append(interSecRegion)
 
+        '''
         if len(intersectionRegions)>1:
             while True:
                 intersectionRegions=self.getMaxIntersectionRegions(intersectionRegions)
                 if len(intersectionRegions)<=2:
                     break
-
+        '''
         return intersectionRegions
 
     def getCities(self,inputPolygons,kmThreshold=50):
