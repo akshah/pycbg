@@ -349,23 +349,24 @@ class cbg():
         intersectionRegions=self.getMaxIntersectionRegions(polyList)
 
         for pp in intersectionRegions:
-            centroidPoint=pp.centroid
-            centroidLon=centroidPoint.x
-            centroidLat=centroidPoint.y
-            for city,locDict in cityLocs.items():
-                cityLat=float(locDict["lat"])
-                cityLon=float(locDict["lon"])
-                #print(cityLat,cityLon)
-                dst=self.haversine(cityLon,cityLat,centroidLon,centroidLat)
-                if dst<=kmThreshold:
-                    city,country,region=city.split('|')
-                    if country not in geoCityDict.keys():
-                        geoCityDict[country]={}
-                    if region not in geoCityDict[country].keys():
-                        geoCityDict[country][region]={}
-                    if city not in geoCityDict[country][region].keys():
-                        geoCityDict[country][region][city]={}
-                    geoCityDict[country][region][city]=locDict
+            if pp:
+                centroidPoint=pp.centroid
+                centroidLon=centroidPoint.x
+                centroidLat=centroidPoint.y
+                for city,locDict in cityLocs.items():
+                    cityLat=float(locDict["lat"])
+                    cityLon=float(locDict["lon"])
+                    #print(cityLat,cityLon)
+                    dst=self.haversine(cityLon,cityLat,centroidLon,centroidLat)
+                    if dst<=kmThreshold:
+                        city,country,region=city.split('|')
+                        if country not in geoCityDict.keys():
+                            geoCityDict[country]={}
+                        if region not in geoCityDict[country].keys():
+                            geoCityDict[country][region]={}
+                        if city not in geoCityDict[country][region].keys():
+                            geoCityDict[country][region][city]={}
+                        geoCityDict[country][region][city]=locDict
         return geoCityDict
 
 
