@@ -368,7 +368,7 @@ class cbg():
         return geoCityDict
 
 
-    def getEstimatedLoctions(self,inputPolygons):
+    def getEstimatedLocations(self,inputPolygons):
         polyList=self.solConstraints(inputPolygons)
         intersectionRegions=self.getMaxIntersectionRegions(polyList)
         centroidLonList=[]
