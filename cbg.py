@@ -28,10 +28,10 @@ class cbg():
                 for rttDict in trace["result"]:
                     rttVals.append(rttDict["rtt"])
                 dst=self.rttToDistance(float(min(rttVals)))
-
-                ptLat=probeIDLocationDict[trace["prb_id"]]["lat"]
-                ptLong=probeIDLocationDict[trace["prb_id"]]["lon"]
-                inputPolygons.append(self.latlonbuffer(float(ptLat),float(ptLong),dst))
+                if dst<1500:
+                    ptLat=probeIDLocationDict[trace["prb_id"]]["lat"]
+                    ptLong=probeIDLocationDict[trace["prb_id"]]["lon"]
+                    inputPolygons.append(self.latlonbuffer(float(ptLat),float(ptLong),dst))
             except KeyError:
                 continue
         #print('{0} input constraints'.format(len(inputPolygons)))
