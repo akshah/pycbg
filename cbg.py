@@ -371,14 +371,15 @@ class cbg():
 
     def getEstimatedLocations(self,inputPolygons):
         polyList=self.solConstraints(inputPolygons)
-        intersectionRegions=self.getMaxIntersectionRegions(polyList)
         centroidsList=[]
-        for pp in intersectionRegions:
-            if pp:
-                centroidPoint=pp.centroid
-                centroidLon=centroidPoint.x
-                centroidLat=centroidPoint.y
-                centroidDict={'lat':centroidLat,'lon':centroidLon}
-                centroidsList.append(centroidDict)
+        if len(polyList)>1:
+            intersectionRegions=self.getMaxIntersectionRegions(polyList)
+            for pp in intersectionRegions:
+                if pp:
+                    centroidPoint=pp.centroid
+                    centroidLon=centroidPoint.x
+                    centroidLat=centroidPoint.y
+                    centroidDict={'lat':centroidLat,'lon':centroidLon}
+                    centroidsList.append(centroidDict)
 
         return centroidsList
