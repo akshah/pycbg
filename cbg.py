@@ -345,28 +345,28 @@ class cbg():
         polyList=self.solConstraints(inputPolygons)
 
         #result = [poly1.intersection(poly2) for poly1,poly2 in  itertools.combinations(polyList, 2) if poly1.intersects(poly2)]
+        if len(polyList)>1:
+            intersectionRegions=self.getMaxIntersectionRegions(polyList)
 
-        intersectionRegions=self.getMaxIntersectionRegions(polyList)
-
-        for pp in intersectionRegions:
-            if pp:
-                centroidPoint=pp.centroid
-                centroidLon=centroidPoint.x
-                centroidLat=centroidPoint.y
-                for city,locDict in cityLocs.items():
-                    cityLat=float(locDict["lat"])
-                    cityLon=float(locDict["lon"])
-                    #print(cityLat,cityLon)
-                    dst=self.haversine(cityLon,cityLat,centroidLon,centroidLat)
-                    if dst<=kmThreshold:
-                        city,country,region=city.split('|')
-                        if country not in geoCityDict.keys():
-                            geoCityDict[country]={}
-                        if region not in geoCityDict[country].keys():
-                            geoCityDict[country][region]={}
-                        if city not in geoCityDict[country][region].keys():
-                            geoCityDict[country][region][city]={}
-                        geoCityDict[country][region][city]=locDict
+            for pp in intersectionRegions:
+                if pp:
+                    centroidPoint=pp.centroid
+                    centroidLon=centroidPoint.x
+                    centroidLat=centroidPoint.y
+                    for city,locDict in cityLocs.items():
+                        cityLat=float(locDict["lat"])
+                        cityLon=float(locDict["lon"])
+                        #print(cityLat,cityLon)
+                        dst=self.haversine(cityLon,cityLat,centroidLon,centroidLat)
+                        if dst<=kmThreshold:
+                            city,country,region=city.split('|')
+                            if country not in geoCityDict.keys():
+                                geoCityDict[country]={}
+                            if region not in geoCityDict[country].keys():
+                                geoCityDict[country][region]={}
+                            if city not in geoCityDict[country][region].keys():
+                                geoCityDict[country][region][city]={}
+                            geoCityDict[country][region][city]=locDict
         return geoCityDict
 
 
