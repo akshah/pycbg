@@ -34,7 +34,7 @@ class cbg():
                 inputPolygons.append(self.latlonbuffer(float(ptLat),float(ptLong),dst))
             except KeyError:
                 continue
-        print('{0} input constraints'.format(len(inputPolygons)))
+        #print('{0} input constraints'.format(len(inputPolygons)))
         return inputPolygons
 
     def latlonString(self,lat, lon):
