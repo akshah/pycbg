@@ -259,7 +259,7 @@ class cbg():
             #Prepare DB info
             db = pymysql.connect(host="proton.netsec.colostate.edu",
                              user="netsecstudent",
-                             passwd="*****",
+                             passwd="n3ts3cL@bs",#Read only account
                              db="caida_geonames")
             with closing( db.cursor() ) as cur:
                 try:
@@ -366,3 +366,18 @@ class cbg():
                         geoCityDict[country][region][city]={}
                     geoCityDict[country][region][city]=locDict
         return geoCityDict
+
+
+    def getEstimatedLoctions(self,inputPolygons):
+
+        intersectionRegions=self.getMaxIntersectionRegions(polyList)
+        centroidLonList=[]
+        centroidLatList=[]
+        for pp in intersectionRegions:
+            centroidPoint=pp.centroid
+            centroidLon=centroidPoint.x
+            centroidLat=centroidPoint.y
+            centroidLonList.append(centroidLon)
+            centroidLatList.append(centroidLat)
+
+        return np.average(centroidLatList),np.average(centroidLonList)
