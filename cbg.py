@@ -386,4 +386,4 @@ class cbg():
         if len(centroidsLatList)>0:
             return np.average(np.array(centroidsLatList)),np.average(np.array(centroidsLonList))
         else:
-            return None
+            return None,None
