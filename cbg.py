@@ -370,9 +370,10 @@ class cbg():
         return geoCityDict
 
 
-    def getEstimatedLocations(self,inputPolygons):
+    def getEstimatedLocation(self,inputPolygons):
         polyList=self.solConstraints(inputPolygons)
-        centroidsList=[]
+        centroidsLatList=[]
+        centroidsLonList=[]
         if len(polyList)>1:
             intersectionRegions=self.getMaxIntersectionRegions(polyList)
             for pp in intersectionRegions:
@@ -380,7 +381,9 @@ class cbg():
                     centroidPoint=pp.centroid
                     centroidLon=centroidPoint.x
                     centroidLat=centroidPoint.y
-                    centroidDict={'lat':centroidLat,'lon':centroidLon}
-                    centroidsList.append(centroidDict)
-
-        return centroidsList
+                    centroidsLatList.append(centroidLat)
+                    centroidsLonList.append(centroidLon)
+        if len(centroidsLatList)>0:
+            return np.average(np.array(centroidsLatList)),np.average(np.array(centroidsLonList))
+        else:
+            return None
