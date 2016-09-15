@@ -334,7 +334,7 @@ class cbg():
         if len(intersectionRegions)>1:
             while True:
                 intersectionRegions=self.getMaxIntersectionRegions(intersectionRegions)
-                if len(intersectionRegions)<=2:
+                if len(intersectionRegions)<=4:
                     break
 
         return intersectionRegions
