@@ -31,11 +31,10 @@ class cbg():
                 if dst<5000:
                     ptLat=probeIDLocationDict[trace["prb_id"]]["lat"]
                     ptLong=probeIDLocationDict[trace["prb_id"]]["lon"]
-                    print(trace)
                     inputPolygons.append(self.latlonbuffer(float(ptLat),float(ptLong),dst))
             except KeyError:
                 continue
-        #print('{0} input constraints'.format(len(inputPolygons)))
+        print('{0} input constraints'.format(len(inputPolygons)))
         return inputPolygons
 
     def latlonString(self,lat, lon):
