@@ -29,7 +29,7 @@ class cbg():
                 for rttDict in trace["result"]:
                     rttVals.append(rttDict["rtt"])
                 dst=self.rttToDistance(float(min(rttVals)))
-                if dst<5000:
+                if dst<10000:#Extremly Large, Will mostly not happen
                     ptLat=float(probeIDLocationDict[trace["prb_id"]]["lat"])
                     ptLong=float(probeIDLocationDict[trace["prb_id"]]["lon"])
                     #Check lat lons
@@ -191,7 +191,7 @@ class cbg():
             lat1=geom.bounds[1],
             lat2=geom.bounds[3])),
     geom)
-        return geom_area.area
+        return geom_area.area/10**6 #Return in Sq. KM
 
     def solConstraints(self,inputPolygons):
         unionPolys=[]
