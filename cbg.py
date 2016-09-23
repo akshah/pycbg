@@ -191,7 +191,7 @@ class cbg():
                 unionPolys.append(inPoly)
 
         polyList=[]
-
+        print('{0} SoL constraints'.format(len(unionPolys)))
         for inPoly in unionPolys:
             crossFlag,linesIntersectsWith=self.checkIfCrossesBoundaries(inPoly)
             quadrants=self.checkQuadrants(inPoly)
