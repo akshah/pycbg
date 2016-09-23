@@ -386,6 +386,6 @@ class cbg():
                     centroidsLonList.append(centroidLon)
                     areaList.append(pp.area)
         if len(centroidsLatList)>0:
-            return np.average(np.array(centroidsLatList)),np.average(np.array(centroidsLonList),np.average(np.array(areaList))
+            return np.average(np.array(centroidsLatList)),np.average(np.array(centroidsLonList)),np.average(np.array(areaList))
         else:
             return None,None
