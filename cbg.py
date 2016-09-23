@@ -3,6 +3,7 @@ from mpl_toolkits.basemap import Basemap
 from matplotlib import pyplot as plt
 from shapely.geometry import Point,LineString,Polygon
 from shapely.ops import polygonize,cascaded_union
+import shapely.ops as ops
 from shapely.ops import transform
 from functools import partial
 import traceback
