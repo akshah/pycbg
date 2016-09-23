@@ -181,7 +181,7 @@ class cbg():
             print(lon1, lat1, lon2, lat2)
             traceback.print_exc()
 
-    def geoArea(self,poly):
+    def geoArea(self,geom):
         geom_area = ops.transform(
         partial(
         pyproj.transform,
@@ -190,7 +190,7 @@ class cbg():
             proj='aea',
             lat1=geom.bounds[1],
             lat2=geom.bounds[3])),
-    poly)
+    geom)
         return geom_area.area
 
     def solConstraints(self,inputPolygons):
