@@ -334,7 +334,7 @@ class cbg():
         if len(intersectionRegions)>1:
             while True:
                 intersectionRegions=self.getMaxIntersectionRegions(intersectionRegions)
-                if len(intersectionRegions)<=4:
+                if len(intersectionRegions)<=2:
                     break
 
         return intersectionRegions
@@ -374,6 +374,7 @@ class cbg():
         polyList=self.solConstraints(inputPolygons)
         centroidsLatList=[]
         centroidsLonList=[]
+        areaList=[]
         if len(polyList)>1:
             intersectionRegions=self.getMaxIntersectionRegions(polyList)
             for pp in intersectionRegions:
@@ -383,7 +384,8 @@ class cbg():
                     centroidLat=centroidPoint.y
                     centroidsLatList.append(centroidLat)
                     centroidsLonList.append(centroidLon)
+                    areaList.append(pp.area)
         if len(centroidsLatList)>0:
-            return np.average(np.array(centroidsLatList)),np.average(np.array(centroidsLonList))
+            return np.average(np.array(centroidsLatList)),np.average(np.array(centroidsLonList),np.average(np.array(areaList))
         else:
             return None,None
