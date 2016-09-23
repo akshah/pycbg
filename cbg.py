@@ -33,7 +33,7 @@ class cbg():
                     ptLong=float(probeIDLocationDict[trace["prb_id"]]["lon"])
                     #Check lat lons
                     if ptLat<=90 and ptLat>=-90 and ptLong<=180 and ptLong>=-180:
-                        inputPolygons.append(self.latlonbuffer(ptLat,ptLong),dst))
+                        inputPolygons.append(self.latlonbuffer(ptLat,ptLong),dst)
             except KeyError:
                 continue
         print('{0} input constraints'.format(len(inputPolygons)))
