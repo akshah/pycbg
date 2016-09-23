@@ -401,7 +401,7 @@ class cbg():
                     centroidLat=centroidPoint.y
                     centroidsLatList.append(centroidLat)
                     centroidsLonList.append(centroidLon)
-                    areaList.append(geoArea(pp))
+                    areaList.append(self.geoArea(pp))
         if len(centroidsLatList)>0:
             return np.average(np.array(centroidsLatList)),np.average(np.array(centroidsLonList)),np.average(np.array(areaList))
         else:
