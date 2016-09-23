@@ -29,7 +29,7 @@ class cbg():
                 for rttDict in trace["result"]:
                     rttVals.append(rttDict["rtt"])
                 dst=self.rttToDistance(float(min(rttVals)))
-                if dst<1500:#Extremly Large, Will mostly not happen
+                if dst<150000000:#Extremly Large, Will mostly not happen
                     ptLat=float(probeIDLocationDict[trace["prb_id"]]["lat"])
                     ptLong=float(probeIDLocationDict[trace["prb_id"]]["lon"])
                     #Check lat lons
