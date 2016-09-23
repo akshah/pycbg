@@ -373,6 +373,8 @@ class cbg():
 
     def getEstimatedLocation(self,inputPolygons):
         polyList=self.solConstraints(inputPolygons)
+        if len(polyList)==0:
+            return None,None,None
         centroidsLatList=[]
         centroidsLonList=[]
         areaList=[]
