@@ -29,7 +29,7 @@ class cbg():
                 for rttDict in trace["result"]:
                     rttVals.append(rttDict["rtt"])
                 dst=self.rttToDistance(float(min(rttVals)))
-                if dst<150000000:#Extremly Large, Will mostly not happen
+                if dst<1500:
                     ptLat=float(probeIDLocationDict[trace["prb_id"]]["lat"])
                     ptLong=float(probeIDLocationDict[trace["prb_id"]]["lon"])
                     #Check lat lons
@@ -388,7 +388,7 @@ class cbg():
 
     def getEstimatedLocation(self,inputPolygons):
         polyList=self.solConstraints(inputPolygons)
-        if len(polyList)==0:
+        if len(polyList)<3:
             return None,None,None
         centroidsLatList=[]
         centroidsLonList=[]
