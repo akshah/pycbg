@@ -36,7 +36,7 @@ class cbg():
                         inputPolygons.append(self.latlonbuffer(ptLat,ptLong,dst))
             except KeyError:
                 continue
-        print('{0} input constraints'.format(len(inputPolygons)))
+        #print('{0} input constraints'.format(len(inputPolygons)))
         return inputPolygons
 
     def latlonString(self,lat, lon):
@@ -180,6 +180,18 @@ class cbg():
             print(lon1, lat1, lon2, lat2)
             traceback.print_exc()
 
+    def geoArea(self,poly):
+        geom_area = ops.transform(
+        partial(
+        pyproj.transform,
+        pyproj.Proj(init='EPSG:4326'),
+        pyproj.Proj(
+            proj='aea',
+            lat1=geom.bounds[1],
+            lat2=geom.bounds[3])),
+    poly)
+        return geom_area.area
+
     def solConstraints(self,inputPolygons):
         unionPolys=[]
         for inPoly in inputPolygons:
@@ -193,7 +205,7 @@ class cbg():
                 unionPolys.append(inPoly)
 
         polyList=[]
-        print('{0} SoL constraints'.format(len(unionPolys)))
+        #print('{0} SoL constraints'.format(len(unionPolys)))
         for inPoly in unionPolys:
             crossFlag,linesIntersectsWith=self.checkIfCrossesBoundaries(inPoly)
             quadrants=self.checkQuadrants(inPoly)
@@ -389,7 +401,7 @@ class cbg():
                     centroidLat=centroidPoint.y
                     centroidsLatList.append(centroidLat)
                     centroidsLonList.append(centroidLon)
-                    areaList.append(pp.area)
+                    areaList.append(geoArea(pp))
         if len(centroidsLatList)>0:
             return np.average(np.array(centroidsLatList)),np.average(np.array(centroidsLonList)),np.average(np.array(areaList))
         else:
