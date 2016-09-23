@@ -378,7 +378,7 @@ class cbg():
         areaList=[]
         if len(polyList)>1:
             intersectionRegions=self.getMaxIntersectionRegions(polyList)
-            for pp in intersectionRegions[:1]:
+            for pp in intersectionRegions[:1]:#For now work with top intersection
                 if pp:
                     centroidPoint=pp.centroid
                     centroidLon=centroidPoint.x
