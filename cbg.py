@@ -32,7 +32,6 @@ class cbg():
                     ptLat=probeIDLocationDict[trace["prb_id"]]["lat"]
                     ptLong=probeIDLocationDict[trace["prb_id"]]["lon"]
                     inputPolygons.append(self.latlonbuffer(float(ptLat),float(ptLong),dst))
-                    print('created input polygons')
             except KeyError:
                 continue
         #print('{0} input constraints'.format(len(inputPolygons)))
@@ -182,12 +181,13 @@ class cbg():
     def solConstraints(self,inputPolygons):
         unionPolys=[]
         for inPoly in inputPolygons:
+
             if not inPoly.is_valid:
                 exterior = inPoly.exterior
-                segments = cascaded_union([exterior,exterior])
-                polyParts = list(polygonize(segments))
-                for pp in polyParts:
-                    unionPolys.append(pp)
+                #segments = cascaded_union([exterior,exterior])
+                #polyParts = list(polygonize(segments))
+                #for pp in polyParts:
+                #    unionPolys.append(pp)
             else:
                 unionPolys.append(inPoly)
 
