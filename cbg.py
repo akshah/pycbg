@@ -297,11 +297,11 @@ class cbg():
 
     def getMaxIntersectionRegions(self,polyList):
         intersecDict=[[]]*len(polyList)
-        for iter in range(0,len(polyList)-1):
+        for iter in range(0,len(polyList)):
             p1=polyList[iter]
             intersecDict[iter]=[]
             intersecDict[iter].append(p1)
-            for iterIn in range(0,len(polyList)-1):
+            for iterIn in range(0,len(polyList)):
                 p2=polyList[iterIn]
                 insertFlag=False
                 for pInSet in intersecDict[iter]:
@@ -327,17 +327,17 @@ class cbg():
         intersectionRegions=[]
         for entry in polysWithMaxIntersection:
             interSecRegion=entry[0]
-            for itr in range(1,len(entry)-1):
+            for itr in range(1,len(entry)):
                 interSecRegion=interSecRegion.intersection(entry[itr])
             intersectionRegions.append(interSecRegion)
 
-
+        '''
         if len(intersectionRegions)>1:
             while True:
                 intersectionRegions=self.getMaxIntersectionRegions(intersectionRegions)
                 if len(intersectionRegions)<=2:
                     break
-
+        '''
         return intersectionRegions
 
     def getCities(self,inputPolygons,kmThreshold=50):
@@ -378,7 +378,7 @@ class cbg():
         areaList=[]
         if len(polyList)>1:
             intersectionRegions=self.getMaxIntersectionRegions(polyList)
-            for pp in intersectionRegions:
+            for pp in intersectionRegions[:1]:
                 if pp:
                     centroidPoint=pp.centroid
                     centroidLon=centroidPoint.x
