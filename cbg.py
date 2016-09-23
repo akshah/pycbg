@@ -28,7 +28,7 @@ class cbg():
                 for rttDict in trace["result"]:
                     rttVals.append(rttDict["rtt"])
                 dst=self.rttToDistance(float(min(rttVals)))
-                if dst<6500:
+                if dst<5000:
                     ptLat=probeIDLocationDict[trace["prb_id"]]["lat"]
                     ptLong=probeIDLocationDict[trace["prb_id"]]["lon"]
                     inputPolygons.append(self.latlonbuffer(float(ptLat),float(ptLong),dst))
