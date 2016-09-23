@@ -31,6 +31,7 @@ class cbg():
                 if dst<5000:
                     ptLat=probeIDLocationDict[trace["prb_id"]]["lat"]
                     ptLong=probeIDLocationDict[trace["prb_id"]]["lon"]
+                    print(float(ptLat),float(ptLong),dst)
                     inputPolygons.append(self.latlonbuffer(float(ptLat),float(ptLong),dst))
             except KeyError:
                 continue
