@@ -32,6 +32,7 @@ class cbg():
                     ptLat=probeIDLocationDict[trace["prb_id"]]["lat"]
                     ptLong=probeIDLocationDict[trace["prb_id"]]["lon"]
                     inputPolygons.append(self.latlonbuffer(float(ptLat),float(ptLong),dst))
+                    print('created input polygons')
             except KeyError:
                 continue
         #print('{0} input constraints'.format(len(inputPolygons)))
