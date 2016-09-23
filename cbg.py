@@ -140,7 +140,8 @@ class cbg():
     def rttToDistance(self,rtt):
         #Returns KM
         c=3*(10**8)
-        return (4/9)*c*rtt*(10**-3)/1000/2
+        #return (4/9)*c*rtt*(10**-3)/1000/2
+        return (2/3)*c*rtt*(10**-3)/1000/2
 
     def showPolygons(self,polyList):
         #Set up figure
